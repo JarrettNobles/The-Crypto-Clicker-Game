@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Create User Account</h1>
+<hr>
 
 
 <form method="post" action="createAccount.php">
@@ -20,6 +21,10 @@
   <input type="password" name="password2" ><br><br>
   <input type="submit" value="Create Account">
 </form>
+<footer>
+	<hr>
+
+</footer>
 <style>
 form{
 	text-align: center;
@@ -32,6 +37,15 @@ h1{
 }
 .button{
 	padding: 15px 32px;
+}
+hr{
+	display:block;
+	/*width: 300px;*/
+	margin-left: auto;
+	margin-right: auto;
+	height: 100px;
+	background-color:#666;
+	opacity: 0.5;
 }
 
 
