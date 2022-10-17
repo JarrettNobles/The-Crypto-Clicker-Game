@@ -7,7 +7,7 @@
 <h1>Create User Account</h1>
 
 
-<form method="post" action="createUser.php">
+<form method="post" action="createAccount.php">
   First name:<br>
   <input type="text" name="firstname"><br>
   Last name:<br>
@@ -29,6 +29,9 @@ input{
 }
 h1{
 	text-align: center;
+}
+.button{
+	padding: 15px 32px;
 }
 
 
