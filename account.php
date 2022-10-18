@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Create User Account</h1>
-<hr>
+
 
 
 <form method="post" action="createAccount.php">
@@ -23,7 +23,7 @@
   <input type="submit" value="Create Account">
 </form>
 <footer>
-	<hr>
+	
 
 </footer>
 <style>
