@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Create Your Account!</title>
+<link rel="stylesheet" href="crypto.css">
 </head>
 <body>
 <h1>Create User Account</h1>
