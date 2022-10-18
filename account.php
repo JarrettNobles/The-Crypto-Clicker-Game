@@ -10,10 +10,6 @@
 
 
 <form method="post" action="createAccount.php">
-  First name:<br>
-  <input type="text" name="firstname"><br>
-  Last name:<br>
-  <input type="text" name="lastname" ><br><br>
   User name:<br>
   <input type="text" name="username" ><br><br>
   Password:<br>
