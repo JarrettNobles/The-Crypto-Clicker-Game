@@ -5,24 +5,32 @@
 </head>
 <link rel="stylesheet" href="crypto.css">
 <body>
-<div class="tab">
+<div class="tab" style="display:none">
     <button class="tablinks" onclick="openSection('clicker')" id="defaultOpen">Clicker <br/></button>
     <button class="tablinks" onclick="openSection('shop')">Shop <br/></button>
     <button class="tablinks" id = "aboutButton" onclick="openSection('about')">About Crypto Mining <br/> Cost: 100BTC</button>
     <button class="tablinks" id = "resourcesButton" onclick="openSection('resources')">Resources <br/> Cost: 200BTC</button>
     <button class="tablinks" id = "startYourselfButton" onclick="openSection('startYourself')">Start Mining <br/> Cost: 300BTC</button>
+    <button class="tablinks" style="text-alignment: right" onclick="">Login <br/> </button>
 </div>
+
+<center style="align:center">
+	<h1 style="text-align:center; color:white"> Welcome to the Crypto Clicker Game </h1>
+	<h2 style="text-align:center"> Mine till you drop</h2><br>
+	<button Class=" " id = "playNow" onclick="openSection('playNow')"> Play Now</button>
+</center>
+
 <div style="width: 100%;">
-       <h1 id="Wallet" style="text-align: center; font-size: 75px;">
+       <h1 class= "tabcontent" id="Wallet" style="text-align: center; font-size: 75px;">
            <label>Wallet:</label>
            <label id="num">0</label>
            <label>BTC</label>
        </h1><br/>
-    <div id="clicker" class="tabcontent">
+	<div id="clicker" class="tabcontent">
         <center>
-        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color()"/> <br/>
+        <img class= "tabcontent" id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color()"/> <br/>
         </center>
-        <div id = "miners">
+        <div class= "tabcontent" id = "miners">
             <h3 style="text-align: center; font-size: 60px; color: white; border-style: solid; border-color: rgb(2,64,120);
   border-top-color: coral;">MINERS</h3>
             <div id = "miniMiners"></div>
@@ -346,6 +354,16 @@
                 document.getElementById('startYourselfButton').innerText = 'Start Yourself';
                 startYourselfUnlocked = true;
             }
+			/*if(sectionName == 'playNow' && !playNowUnlocked)
+        {
+            if(cryptoCount )
+                return;
+            else
+            {
+                document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+                document.getElementById('startYourselfButton').innerText = 'login';
+                playNowUnlocked = true;
+            } */
         }
         // Declare all variables
         var i, tabcontent, tablinks;
