@@ -14,7 +14,7 @@
   				die('Could not connect to mySQL: ' . $con->connect_error);
   			}
 			//database insertion
-			$sql = "INSERT INTO Users (username, Password) VALUES ('$_POST[username]', '$_POST[Password]', '$md5Pass')";
+			$sql = "INSERT INTO Users (username, Password) VALUES ('$_POST[username]', '$_POST[password]', '$md5Pass')";
 			echo "Built sql: " . $sql;
 
 	        	if (!$con->query($sql)=== TRUE)
@@ -22,7 +22,7 @@
        		   		die('Error adding User: ' . $con->error);
 			}
 			//change this to have the mining page
-			header("Location: https://mercer.edu");
+			header("Location: game.html");
        	 	}
 
 
