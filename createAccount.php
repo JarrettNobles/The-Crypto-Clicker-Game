@@ -8,13 +8,13 @@
 			$md5Pass = md5($_POST['password1']);
 			echo 'Password check.  Hash to: ' . $md5Pass . "<br>";
 			// insert database info here
-			$con = new mysqli('localhost','root','eBMcvmNiPRx7Wi','lampusers');
+			$con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
 			if ($con->connect_error)
   			{
   				die('Could not connect to mySQL: ' . $con->connect_error);
   			}
 			//database insertion
-			$sql = "INSERT INTO cryptousers (Username, Password) VALUES ('$_POST[Username]', '$_POST[Password]', '$md5Pass')";
+			$sql = "INSERT INTO Users (username, Password) VALUES ('$_POST[username]', '$_POST[Password]', '$md5Pass')";
 			echo "Built sql: " . $sql;
 
 	        	if (!$con->query($sql)=== TRUE)
@@ -47,12 +47,4 @@
 
 ?>
 
-<html>
-	<head>
-		<title>Create Your Account</title>
-	</head>
-	
-	<body>
 
-	</body>
-</html>
