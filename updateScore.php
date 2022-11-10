@@ -9,7 +9,7 @@
   				die('Could not connect to mySQL: ' . $con->connect_error);
   			}
 			//database insertion
-			if (isset($_POST['score']))
+			/*if (isset($_POST['score']))
         {
 			$sql = "Update Users (score) VALUES ('$_POST[score]')";
 			echo "Built sql: " . $sql;
@@ -17,7 +17,19 @@
 	        	if (!$con->query($sql)=== TRUE)
        		   	{
        		   		die('Error adding Score: ' . $con->error);
-			}
+			}*/
+if (isset($_POST['score']))
+        {
+        $sql="INSERT into Users (score)
+        VALUES
+        ('$_POST[score]')";
+
+        if (!$con->query($sql)=== TRUE)
+          {
+          die('Error adding score: ' . $con->error);
+          }
+        }
+			
 			//change this to have the mining page
 			header("Location: acount.php");
        	 	}

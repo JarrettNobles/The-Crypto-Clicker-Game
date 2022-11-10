@@ -22,20 +22,12 @@
            <label>BTC</label>
        </h1><br/>
 	   <!-- php save attempt-->
-	  <?php
-if (isset($_POST['score']))
-        {
-        $sql="Update Users (score)
-        VALUES
-        ('$_POST[score]')";
-        }
-
-?>
+	  
 <center>
-	  <form action="updateScore.php">
-            <input type="submit" value="Save">
-          </form>
-    </form>
+	  <form method="post" action=".">
+   score: <input type="text" name="score" />
+<input type="submit" value="Save" /><br />
+</form>
 </center>
 	  <!-- end of php save attempt -->
 	  
@@ -477,7 +469,7 @@ if (isset($_POST['score']))
 
         document.body.style.color = bgColor;
     }
-	
+/*	
 $.ajax({  
     type: 'POST',  
     url: 'updateScore.php', 
