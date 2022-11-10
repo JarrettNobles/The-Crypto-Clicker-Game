@@ -64,7 +64,7 @@ if (isset($_POST['score']))
 
 <center>
 
-	  <form method="post" action=".">
+	  <form method="post" action="save.php">
    score: <input type="text" name="score" />
 <input type="submit" value="Save" /><br />
 </form>
