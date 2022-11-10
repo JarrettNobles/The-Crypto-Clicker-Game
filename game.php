@@ -5,6 +5,7 @@
     <title>Crypto Clicker Template</title>
 </head>
 <link rel="stylesheet" href="crypto.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Jquery-->
 <body>
 <div class="tab">
     <button class="tablinks" onclick="openSection('clicker')" id="defaultOpen">Clicker <br/></button>
@@ -40,7 +41,7 @@ if (isset($_POST['score']))
 	  
     <div id="clicker" class="tabcontent">
         <center>
-        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color()"/> <br/>
+        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color();"/> <br/>
         </center>
         <div id = "miners">
             <h3 style="text-align: center; font-size: 60px; color: white; border-style: solid; border-color: rgb(2,64,120);
@@ -476,6 +477,7 @@ if (isset($_POST['score']))
 
         document.body.style.color = bgColor;
     }
+	
 $.ajax({  
     type: 'POST',  
     url: 'updateScore.php', 
@@ -493,5 +495,8 @@ $.ajax({
     }
 });
 
+/*function ajax(){
+	alert(<?php echo "score";?>);
+}*/
 </script>
 

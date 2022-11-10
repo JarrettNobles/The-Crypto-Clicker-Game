@@ -19,7 +19,7 @@
        		   		die('Error adding Score: ' . $con->error);
 			}
 			//change this to have the mining page
-			header("Location: index.html");
+			header("Location: acount.php");
        	 	}
 
 		else
