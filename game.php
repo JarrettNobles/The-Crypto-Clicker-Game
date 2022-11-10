@@ -17,7 +17,7 @@
 <div style="width: 100%;">
        <h1 id="Wallet" style="text-align: center; font-size: 75px;">
            <label>Wallet:</label>
-           <label id="num">0</label>
+           <label id="num"><?php echo $score ?></label>
            <label>BTC</label>
        </h1><br/>
 	   <!-- php save attempt-->
@@ -202,7 +202,8 @@ if (isset($_POST['score']))
 <script>
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
-    let cryptoCount = "<?php echo $score ?>";
+  // let tanner= <?php echo $score ?>;
+   let cryptoCount = 0;
 
     let incVal = 1;
 
