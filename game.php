@@ -24,9 +24,10 @@ $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
   			}
 if (isset($_POST['score']))
         {
+			UPDATE `Users` SET `score` = '2' WHERE `Users`.`UID` = *;
         $sql="Update Users (score)
         VALUES
-        ('$_POST[score]')";
+        ('$_POST[score]') where Users'.'UID' =*";
 
         if (!$con->query($sql)=== TRUE)
           {
