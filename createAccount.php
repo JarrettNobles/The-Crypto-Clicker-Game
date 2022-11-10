@@ -14,7 +14,7 @@
   				die('Could not connect to mySQL: ' . $con->connect_error);
   			}
 			//database insertion
-			$sql = "INSERT INTO Users (username, Password) VALUES ('$_POST[username]','$md5Pass')";
+			$sql = "INSERT INTO Users (username, Password, score) VALUES ('$_POST[username]','$md5Pass','0')";
 			echo "Built sql: " . $sql;
 
 	        	if (!$con->query($sql)=== TRUE)

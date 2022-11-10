@@ -20,6 +20,24 @@
            <label id="num">0</label>
            <label>BTC</label>
        </h1><br/>
+	   <!-- php save attempt-->
+	  <?php
+if (isset($_POST['score']))
+        {
+        $sql="Update Users (score)
+        VALUES
+        ('$_POST[score]')";
+        }
+
+?>
+<center>
+	  <form action="updateScore.php">
+            <input type="submit" value="Save">
+          </form>
+    </form>
+</center>
+	  <!-- end of php save attempt -->
+	  
     <div id="clicker" class="tabcontent">
         <center>
         <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color()"/> <br/>
@@ -184,7 +202,7 @@
 <script>
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
-    let cryptoCount = 0.0;
+    let cryptoCount = <?php echo $score ?>;
 
     let incVal = 1;
 
