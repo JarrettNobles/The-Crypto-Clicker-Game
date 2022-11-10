@@ -5,7 +5,7 @@
     <title>Crypto Clicker Template</title>
 </head>
 <link rel="stylesheet" href="crypto.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Jquery-->
+
 <body>
 <div class="tab">
     <button class="tablinks" onclick="openSection('clicker')" id="defaultOpen">Clicker <br/></button>
@@ -15,6 +15,25 @@
     <button class="tablinks" id = "startYourselfButton" onclick="openSection('startYourself')">Start Mining <br/> Cost: 300BTC</button>
 	<button style="text-align: right" id = "" onclick="">Logout</button>
 </div>
+
+<?php
+$con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
+			if ($con->connect_error)
+  			{
+  				die('Could not connect to mySQL: ' . $con->connect_error);
+  			}
+if (isset($_POST['score']))
+        {
+        $sql="Update Users (score)
+        VALUES
+        ('$_POST[score]')";
+
+        if (!$con->query($sql)=== TRUE)
+          {
+          die('Error adding score: ' . $con->error);
+          }
+        }
+?>
 <div style="width: 100%;">
        <h1 id="Wallet" style="text-align: center; font-size: 75px;">
            <label>Wallet:</label>
@@ -23,7 +42,9 @@
        </h1><br/>
 	   <!-- php save attempt-->
 	  
+
 <center>
+
 	  <form method="post" action=".">
    score: <input type="text" name="score" />
 <input type="submit" value="Save" /><br />
