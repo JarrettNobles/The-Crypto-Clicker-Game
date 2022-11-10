@@ -17,6 +17,17 @@
 </div>
 
 <?php
+ session_start(); 
+	$_SESSION['UID'] = $user_id;
+	
+	
+?>
+
+
+
+
+
+<?php
 $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
 			if ($con->connect_error)
   			{
@@ -26,7 +37,7 @@ if (isset($_POST['score']))
         {
         $sql="Update Users (score)
         VALUES
-        ('$_POST[score]') where Users'.'UID' =*";
+        ('$_POST[score]') where Users'.'UID' = $user_id";
 
         if (!$con->query($sql)=== TRUE)
           {
