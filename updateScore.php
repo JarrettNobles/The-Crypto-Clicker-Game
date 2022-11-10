@@ -20,7 +20,7 @@
 			}*/
 if (isset($_POST['score']))
         {
-        $sql="INSERT into Users (score)
+        $sql="Update Users (score)
         VALUES
         ('$_POST[score]')";
 
