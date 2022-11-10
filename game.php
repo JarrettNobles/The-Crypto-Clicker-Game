@@ -17,7 +17,7 @@
 <div style="width: 100%;">
        <h1 id="Wallet" style="text-align: center; font-size: 75px;">
            <label>Wallet:</label>
-           <label id="num"><?php echo $score ?></label>
+           <label id="num">0</label>
            <label>BTC</label>
        </h1><br/>
 	   <!-- php save attempt-->
@@ -202,7 +202,7 @@ if (isset($_POST['score']))
 <script>
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
-  // let tanner= <?php echo $score ?>;
+	//var tanner= '<?php echo $score;?>';
    let cryptoCount = 0;
 
     let incVal = 1;
@@ -476,6 +476,22 @@ if (isset($_POST['score']))
 
         document.body.style.color = bgColor;
     }
+$.ajax({  
+    type: 'POST',  
+    url: 'updateScore.php', 
+    data: { score: this.title },
+    success: function(response) {
+        game.php(response);
+    }
+});
+$.ajax({  
+    type: 'GET',  
+    url: 'game.php', 
+    data: { score: this.title },
+    success: function(response) {
+        game.php(response);
+    }
+});
 
 </script>
 
