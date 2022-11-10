@@ -202,7 +202,7 @@ if (isset($_POST['score']))
 <script>
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
-    let cryptoCount = <?php echo $score ?>;
+    let cryptoCount = "<?php echo $score ?>";
 
     let incVal = 1;
 
