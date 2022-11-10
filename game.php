@@ -30,6 +30,7 @@
         {
         $sql=" Select Users (UID) VALUES ('$_GET[UID]')";
 		echo "Built sql: " . $sql;
+		echo $_SESSION['UID'];
 ?>
 
 
