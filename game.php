@@ -24,7 +24,7 @@
 	   <!-- php save attempt-->
 	  
 <center>
-	  <form method="post" action="UpdateScore">
+	  <form method="post" action="updateScore">
    score: <input type="text" name="score" />
 <input type="submit" value="Save" /><br />
 </form>
