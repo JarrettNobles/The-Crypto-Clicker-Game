@@ -20,7 +20,16 @@
  session_start(); 
 	$_SESSION['UID'] = $user_id;
 	
-	
+	$con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
+			if ($con->connect_error)
+  			{
+  				die('Could not connect to mySQL: ' . $con->connect_error);
+  			}
+			
+		if (isset($_GET['score']))
+        {
+        $sql=" Select Users (UID) VALUES ('$_GET[UID]')";
+		echo "Built sql: " . $sql;
 ?>
 
 
@@ -28,6 +37,7 @@
 
 
 <?php
+ session_start(); 
 $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
 			if ($con->connect_error)
   			{
