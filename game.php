@@ -34,10 +34,6 @@
 		echo $_SESSION['UID'];
 ?>
 
-
-
-
-
 <?php
  session_start(); 
 $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
@@ -47,16 +43,16 @@ $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
   			}
 if (isset($_POST['score']))
         {
-        $sql="Update Users (score)
-        VALUES
-        ('$_POST[score]') where Users'.'UID' = $user_id";
-
+        $sql="Insert Into Users (score)
+        VALUES ('$_POST[score]')"; 
+		
         if (!$con->query($sql)=== TRUE)
           {
           die('Error adding score: ' . $con->error);
           }
         }
 ?>
+
 <div style="width: 100%;">
        <h1 id="Wallet" style="text-align: center; font-size: 75px;">
            <label>Wallet:</label>
