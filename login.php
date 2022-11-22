@@ -18,6 +18,9 @@ if ($result=mysqli_query($con,$sql))
     if ($rowcount == 1)
     {
 	    $_SESSION['loggedin']=1;
+		$_SESSION['UID'] = $result->fetch_assoc()['UID'];
+		echo $SESSION['UID'];
+		header("Location: game.php");
     }
         else
     {
@@ -29,5 +32,5 @@ else
 	die('Need a password');
   }
 }
-header("Location: game.php");
+header("Location: login.html");
 

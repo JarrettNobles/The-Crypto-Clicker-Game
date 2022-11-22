@@ -18,39 +18,11 @@
 
 <?php
  session_start(); 
-	$_SESSION['UID'] = $user_id;
-	
-	$con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
-			if ($con->connect_error)
-  			{
-  				die('Could not connect to mySQL: ' . $con->connect_error);
-  			}
-			
-		if (isset($_GET['score']))
-        {
-        $sql=" Select Users (UID) VALUES ('$_GET[UID]')";
-		}
-		echo "Built sql: " . $sql;
+	if ($_SESSION['loggedin']==1)
+	{
 		echo $_SESSION['UID'];
-?>
-
-<?php
- session_start(); 
-$con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
-			if ($con->connect_error)
-  			{
-  				die('Could not connect to mySQL: ' . $con->connect_error);
-  			}
-if (isset($_POST['score']))
-        {
-        $sql="Insert Into Users (score)
-        VALUES ('$_POST[score]')"; 
-		
-        if (!$con->query($sql)=== TRUE)
-          {
-          die('Error adding score: ' . $con->error);
-          }
-        }
+	
+	
 ?>
 
 <div style="width: 100%;">
@@ -532,3 +504,6 @@ $.ajax({
 }*/
 </script>
 
+<?php
+	}
+?>
