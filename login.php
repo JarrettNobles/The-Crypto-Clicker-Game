@@ -3,7 +3,7 @@ session_start();
 if (isset($_POST['password']))
 {
     $md5Pass = md5($_POST['password']);
-    $con = new mysqli('localhost','root','XPkWWvhWzACj3q','lampusers');
+    $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
 		if ($con->connect_error)
   		{
   		die('Could not connect to mySQL: ' . $con->connect_error);
@@ -29,5 +29,5 @@ else
 	die('Need a password');
   }
 }
-header("Location: favs.php");
+header("Location: game.php");
 

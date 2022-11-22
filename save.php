@@ -3,7 +3,7 @@
 	session_start();
 	if (isset($_POST['score']))
 	{
-		if ($_POST['score'] >= 1)
+		if ($_POST['score'] >= 0)
 		{
 			$con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
 			if ($con->connect_error)
