@@ -19,7 +19,9 @@
   <input type="submit" value="Create Account">
 </form>
 <footer>
-	
+<p> Already have an account click the button below</p>
+	<form action="login.html">
+		<input type="submit" value="Login" />
 
 </footer>
 <style>
