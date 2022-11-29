@@ -19,10 +19,12 @@
 
 	        	if (!$con->query($sql)=== TRUE)
        		   	{
-       		   		die('Error adding User: ' . $con->error);
+				die('Error adding User: ' . $con->error);
+				//header("Location: login.html")
 			}
 			//change this to have the mining page
-			header("Location: login.html")
+			header("Location: login.html");
+			echo "Enter your Username and password to login";
        	 	}
 
 
