@@ -22,7 +22,7 @@
 	{
 		echo $_SESSION['UID'];
 	
-	
+?>
 
 
 <div style="width: 100%;">
@@ -203,7 +203,9 @@
 </div>
 </body>
 </html>
-?>
+	<?php
+	}
+	?>
 <script>
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
