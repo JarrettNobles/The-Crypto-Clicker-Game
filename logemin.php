@@ -1,15 +1,15 @@
 <?php
 session_start();
-if (isset($_POST['Password']))
+if (isset($_POST['password']))
 {
-    $md5Pass = md5($_POST['Password']);
-    $con = new mysqli('localhost','root','XPkWWvhWzACj3q','cryptousers');
+    $md5Pass = md5($_POST['password']);
+    $con = new mysqli('localhost','root','XPkWWvhWzACj3q','lampusers');
 		if ($con->connect_error)
   		{
   		die('Could not connect to mySQL: ' . $con->connect_error);
   		}
 
-   $sql = "SELECT  * FROM Users Where userid='$_POST[username]' AND Password='$md5Pass';";
+   $sql = "SELECT  * FROM Users Where userid='$_POST[username]' AND password='$md5Pass';";
 
 if ($result=mysqli_query($con,$sql))
   {
@@ -18,9 +18,6 @@ if ($result=mysqli_query($con,$sql))
     if ($rowcount == 1)
     {
 	    $_SESSION['loggedin']=1;
-		$_SESSION['UID'] = $result->fetch_assoc()['UID'];
-		echo $SESSION['UID'];
-		header("Location: game.php");
     }
         else
     {
@@ -32,5 +29,5 @@ else
 	die('Need a password');
   }
 }
-header("Location: login.html");
-?>
+header("Location: favs.php");
+

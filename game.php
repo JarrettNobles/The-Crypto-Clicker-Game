@@ -20,6 +20,7 @@
  session_start(); 
 	if ($_SESSION['loggedin']==1)
 	{
+		echo "IN SESSION";
 		echo $_SESSION['UID'];
 	
 ?>
