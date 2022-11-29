@@ -23,7 +23,7 @@
 		echo $_SESSION['UID'];
 	
 	
-?>
+
 
 <div style="width: 100%;">
        <h1 id="Wallet" style="text-align: center; font-size: 75px;">
@@ -203,7 +203,7 @@
 </div>
 </body>
 </html>
-
+?>
 <script>
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
@@ -504,6 +504,3 @@ $.ajax({
 }*/
 </script>
 
-<?php
-	}
-?>
