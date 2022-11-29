@@ -22,7 +22,7 @@
        		   		die('Error adding User: ' . $con->error);
 			}
 			//change this to have the mining page
-			header("Location: game.php");
+			header("Location: login.html")
        	 	}
 
 

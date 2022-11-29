@@ -9,7 +9,9 @@ if (isset($_POST['Password']))
   		die('Could not connect to mySQL: ' . $con->connect_error);
   		}
 
-   $sql = "SELECT  * FROM Users Where userid='$_POST[username]' AND Password='$md5Pass';";
+   $sql = "SELECT  * FROM Users Where username='$_POST[username]' AND Password='$md5Pass';";
+
+
 
 if ($result=mysqli_query($con,$sql))
   {
@@ -19,12 +21,13 @@ if ($result=mysqli_query($con,$sql))
     {
 	    $_SESSION['loggedin']=1;
 		$_SESSION['UID'] = $result->fetch_assoc()['UID'];
-		echo $SESSION['UID'];
+		echo $_SESSION['UID'];
 		header("Location: game.php");
+die("this should work");
     }
         else
     {
-   	     die('Error adding User: ' . $con->error);
+   	     die('Bad username and password: rowcount: ' . $rowcount . ' md5: ' . $md5Pass);
     }
   }
 else
@@ -32,5 +35,5 @@ else
 	die('Need a password');
   }
 }
-header("Location: login.html");
+header("Location: index.html");
 ?>
