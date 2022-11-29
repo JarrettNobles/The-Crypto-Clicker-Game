@@ -13,7 +13,10 @@
     <button class="tablinks" id = "aboutButton" onclick="openSection('about')">About Crypto Mining <br/> Cost: 100BTC</button>
     <button class="tablinks" id = "resourcesButton" onclick="openSection('resources')">Resources <br/> Cost: 200BTC</button>
     <button class="tablinks" id = "startYourselfButton" onclick="openSection('startYourself')">Start Mining <br/> Cost: 300BTC</button>
-	<button style="text-align: right" id = "" onclick="">Logout</button>
+	<!-- <button style="text-align: right" id = "" onclick="">Logout</button>-->
+	<form style="background-color: inherit;"  action="logout.php">
+		<input type="submit" value="Logout" />
+	</form>
 </div>
 
 <?php

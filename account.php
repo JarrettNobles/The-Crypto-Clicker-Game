@@ -18,8 +18,11 @@
   <input type="password" name="password2" ><br><br>
   <input type="submit" value="Create Account">
 </form>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <footer>
+<center>
 <p> Already have an account click the button below</p>
+</center>
 	<form action="login.html">
 		<input type="submit" value="Login" />
 
