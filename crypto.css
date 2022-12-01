@@ -1,6 +1,8 @@
 h1 {
   font-size: 100px;
 font-family: Copperplate, fantasy;
+background-color: #f6f4e8;
+  color: #e59560;
 }
 p {
 font-family: Tahoma, Verdana, sans-serif;
@@ -8,20 +10,22 @@ color: white;
 }
 h3{
 font-family: Verdana, sans-serif;
-color: rgb(66,189,211);
+background-color: #f6f4e8;
+  color: #e59560;
 }
 h2{
 font-family: Verdana, sans-serif;
-color: rgb(66,189,211);
+background-color: #f6f4e8;
+  color: #e59560;
 }
 body{
-background: rgb(2,64,120);
+background: #1D3124;
 }
 img:active {
   transform: scale(0.99);
 }
 a {
-  color: orange;
+  color: #bacec1;
 }
 form {
 background-color: inherit;
@@ -85,7 +89,7 @@ background-color: inherit;
 /* Style the tab */
 .tab {
   overflow: hidden;
-  background-color: dodgerblue;
+  background-color: #bacec1;
 }
 
 /* Style the buttons that are used to open the tab content */
