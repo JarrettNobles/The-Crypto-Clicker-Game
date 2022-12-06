@@ -20,9 +20,18 @@ if ($result=mysqli_query($con,$sql))
     if ($rowcount == 1)
     {
 	    $_SESSION['loggedin']=1;
-		$_SESSION['UID'] = $result->fetch_assoc()['UID'];
-		$_SESSION['score'] = $result->fetch_assoc()['score'];
-		echo $_SESSION['UID'];
+	    $row = $result->fetch_assoc();
+	    $_SESSION['UID']= $row['UID'];
+	    $_SESSION['score'] = $row['score'];
+	    $_SESSION['username'] = $row['username'];
+		
+echo "NEW SESSION WITH...";
+echo "UID: " . $_SESSION['UID'];
+echo "score: " . $_SESSION['score'];
+echo "username: " . $_SESSION['username'];
+
+
+
 		header("Location: game.php");
 die("this should work");
     }

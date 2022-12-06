@@ -1,3 +1,6 @@
+<?php
+ session_start(); 
+?>
 <!DOCTYPE html>
 <!-- change to php-->
 <html>
@@ -20,13 +23,12 @@
 </div>
 
 <?php
- session_start(); 
 	if ($_SESSION['loggedin']==1)
 	{
 		echo "IN SESSION";
-		echo $_SESSION['UID'];
-		echo $_SESSION['username'];
-		echo $_SESSION['score'];
+		echo "UID: " . $_SESSION['UID'];
+		echo "UserName: " . $_SESSION['username'];
+		echo "Score" . $_SESSION['score'];
 ?>
 
 
@@ -216,6 +218,7 @@
     document.getElementById("defaultOpen").click();
 	//var tanner= '<?php echo $score;?>';
    let cryptoCount = <?php echo $_SESSION['score']; ?>;
+        document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
 
     let incVal = 1;
 
