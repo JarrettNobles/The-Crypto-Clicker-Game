@@ -25,7 +25,8 @@
 	{
 		echo "IN SESSION";
 		echo $_SESSION['UID'];
-	
+		echo $_SESSION['username'];
+		echo $_SESSION['score'];
 ?>
 
 
@@ -214,7 +215,7 @@
     //set up for webpage and initialization of global variables
     document.getElementById("defaultOpen").click();
 	//var tanner= '<?php echo $score;?>';
-   let cryptoCount = 0;
+   let cryptoCount = <?php echo $_SESSION['score']; ?>;
 
     let incVal = 1;
 

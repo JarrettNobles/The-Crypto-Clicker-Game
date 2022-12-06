@@ -21,6 +21,7 @@ if ($result=mysqli_query($con,$sql))
     {
 	    $_SESSION['loggedin']=1;
 		$_SESSION['UID'] = $result->fetch_assoc()['UID'];
+		$_SESSION['score'] = $result->fetch_assoc()['score'];
 		echo $_SESSION['UID'];
 		header("Location: game.php");
 die("this should work");
