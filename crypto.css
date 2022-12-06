@@ -1,25 +1,22 @@
 h1 {
   font-size: 100px;
 font-family: Copperplate, fantasy;
-background-color: #f6f4e8;
-  color: #e59560;
+  color: #f0eff4;
 }
 p {
 font-family: Tahoma, Verdana, sans-serif;
-color: white;
+color: black;
 }
 h3{
 font-family: Verdana, sans-serif;
-background-color: #f6f4e8;
-  color: #e59560;
+  color: #cdcbd6;
 }
 h2{
 font-family: Verdana, sans-serif;
-background-color: #f6f4e8;
-  color: #e59560;
+  color: #cdcbd6;
 }
 body{
-background: #1D3124;
+background: #d96846;
 }
 img:active {
   transform: scale(0.99);
