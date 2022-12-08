@@ -20,9 +20,9 @@
 			}*/
 if (isset($_POST['score']))
         {
-        $sql="Update Users (score)
-        VALUES
-        ('$_POST[score]')";
+        $sql="Update Users SET score='$_POST[score]'
+        WHERE UID='$_SESSION[UID]'";
+        //('$_POST[score]')";
 
         if (!$con->query($sql)=== TRUE)
           {
@@ -31,7 +31,7 @@ if (isset($_POST['score']))
         }
 			
 			//change this to have the mining page
-			header("Location: acount.php");
+			header("Location: playAgain.html");
        	 	}
 
 		else

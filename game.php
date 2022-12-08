@@ -20,6 +20,11 @@
 	<form style="background-color: inherit;"  action="logout.php">
 		<input type="submit" value="Logout" />
 	</form>
+
+	<form style="background-color: inherit;"  action="updateScore.php">
+		<input type="submit" value="Save Game" />
+
+
 </div>
 
 <?php
