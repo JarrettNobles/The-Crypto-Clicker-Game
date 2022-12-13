@@ -8,6 +8,7 @@
     <title>Crypto Clicker Template</title>
 </head>
 <link rel="stylesheet" href="crypto.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <body>
 <div class="tab">
@@ -23,14 +24,17 @@
 
 	<form style="background-color: inherit;"  action="updateScore.php">
 		<input type="submit" value="Save Game" />
+	</form>
 
+<a href="updateScore.php?score="+cryptoCount+">"Update Score</a>
+<span onclick="BOB IS THINKING!!!!">update score</span>
 
 </div>
 
 <?php
 	if ($_SESSION['loggedin']==1)
 	{
-		echo "IN SESSION";
+		echo "IN SESSION ";
 		echo "UID: " . $_SESSION['UID'];
 		echo "UserName: " . $_SESSION['username'];
 		echo "Score" . $_SESSION['score'];
@@ -46,18 +50,18 @@
 	   <!-- php save attempt-->
 	  
 
-<center>
+<!--  <center>
 
 	  <form method="post" action="save.php">
    score: <input type="text" name="score" />
 <input type="submit" value="Save" /><br />
 </form>
-</center>
+</center> --> 
 	  <!-- end of php save attempt -->
 	  
     <div id="clicker" class="tabcontent">
         <center>
-        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color();"/> <br/>
+        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color(); "/> <br/>
         </center>
         <div id = "miners">
             <h3 style="text-align: center; font-size: 60px; color: white; border-style: solid; border-color: rgb(2,64,120);
@@ -496,15 +500,28 @@
 
         document.body.style.color = bgColor;
     }
-/*	
+
+//Trying to use JS var to update php var
+
+/*var num = cryptoCount;
+function add(){
+     num++;
+     document.getElementById('num').value = cryptoCount;
+}*/
+
+    /*
+function change(score){
+	
 $.ajax({  
     type: 'POST',  
     url: 'updateScore.php', 
-    data: { score: this.title },
+    data: { 'score': change,'score': 'username'},
     success: function(response) {
-        game.php(response);
+	    game.php(response);
+	    alert(<?php echo "score";?>);
     }
-});
+}}); */
+/*
 $.ajax({  
     type: 'GET',  
     url: 'game.php', 
@@ -513,9 +530,16 @@ $.ajax({
         game.php(response);
     }
 });
-
-/*function ajax(){
+ */
+/*
+function ajax(){
 	alert(<?php echo "score";?>);
 }*/
 </script>
-
+<?php/*
+	<form action="updateScore.php " method="post">
+<button onclick="add()">Add</button>
+<input type="submit" name="num" id="num" value="num" />
+<input type="submit" />
+</form>
+ */?>

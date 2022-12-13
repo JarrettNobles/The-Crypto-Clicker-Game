@@ -20,9 +20,17 @@
 			}*/
 if (isset($_POST['score']))
         {
-        $sql="Update Users SET score='$_POST[score]'
-        WHERE UID='$_SESSION[UID]'";
-        //('$_POST[score]')";
+		$score=$_POST['score'];
+		$UID=$_SESSION['UID'];
+	
+	$sql="UPDATE Users SET score='$score'
+	WHERE UID='$UID'";
+
+$data=$_POST['score'];
+   
+       // $sql="INSERT INTO Users(score) VALUES('score='$_POST[score]'')
+	//WHERE UID='$_SESSION[UID]'";
+//('$_POST[score]')";
 
         if (!$con->query($sql)=== TRUE)
           {
@@ -32,16 +40,16 @@ if (isset($_POST['score']))
 			
 			//change this to have the mining page
 			header("Location: playAgain.html");
-       	 	}
+			{
 
-		else
+		/*else
 			{
 			die('Passwords do not match');
-			}
+			}*/
 	}
-	else
+	/*else
 	{
   		echo "Send me the data";
-	}
+	}*/
 
 ?> 
