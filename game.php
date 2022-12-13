@@ -5,7 +5,7 @@
 <!-- change to php-->
 <html>
 <head>
-    <title>Crypto Clicker Template</title>
+    <title>Crypto Clicker Game</title>
 </head>
 <link rel="stylesheet" href="crypto.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -25,7 +25,7 @@
 	<form style="background-color: inherit;"  action="updateScore.php">
 		<input type="submit" value="Save Game" />
 	</form>
-
+<img src="upload/<?=$user['pp']?>" class="img-fluid rounded-circle">
 <a href="updateScore.php?score="+cryptoCount+">"Update Score</a>
 <span onclick="BOB IS THINKING!!!!">update score</span>
 
@@ -38,6 +38,8 @@
 		echo "UID: " . $_SESSION['UID'];
 		echo "UserName: " . $_SESSION['username'];
 		echo "Score" . $_SESSION['score'];
+		echo "Profile pic" . $_SESSION['pp'];
+		
 ?>
 
 

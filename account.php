@@ -12,6 +12,8 @@
 <form method="post" action="createAccount.php">
   User name:<br>
   <input type="text" name="username" ><br><br>
+Profile Picture: <br>
+	<input type="file" class="form-control" name="pp">
   Password:<br>
   <input type="password" name="password1" ><br><br>
   Re-enter your Password:<br>
