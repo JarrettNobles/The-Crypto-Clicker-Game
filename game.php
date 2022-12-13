@@ -25,8 +25,8 @@
 	<form style="background-color: inherit;"  action="updateScore.php">
 		<input type="submit" value="Save Game" />
 	</form>
-<img src="upload/<?=$user['pp']?>" class="img-fluid rounded-circle">
-<a href="updateScore.php?score="+cryptoCount+">"Update Score</a>
+<img src="./images/<?=$user['pp']?>" class="img-fluid rounded-circle">
+<a href="updateScore.php?score="+cryptoCount+">"Update Score/a>
 <span onclick="BOB IS THINKING!!!!">update score</span>
 
 </div>
