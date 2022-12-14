@@ -236,7 +236,7 @@
     let gpuIdx = 0;
 
 	let miniCount = <?php echo $_SESSION[mini];?>;
-        document.getElementById('mini').innerHTML = miniCount.toFixed(3);
+       // document.getElementById('mini').innerHTML = miniCount.toFixed(3);
     let asicCount = <?php echo $_SESSION[asic];?>;
     let l3Count = <?php echo $_SESSION[l3];?>;
     let hydroCount = <?php echo $_SESSION[hydro];?>;
@@ -245,6 +245,12 @@
     let resourcesUnlocked = false;
     let startYourselfUnlocked = false;
 
+
+
+    ///////////////   Insert a loop that goes miniCount FROM THE DB times running the following:
+   /* for(let i =miniCount; i <miniCount; i++){
+	    document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini.png' class = 'miningRig' style = 'width: 200px;'>";
+    } */
     //function to increment cryptoCount and rewrite it to document
     function increment()
     {
@@ -278,11 +284,11 @@
             document.getElementById('mini').src = "./images/mini_maxed.png";
 	}
     }
-function displayMini(){
+/*function displayMini(){
 	if(miniCount >= 1) {
 document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini.png' class = 'miningRig' style = 'width: 200px;'>"
     }
-	}
+	}*/
 
     function buyAsic()
     {
@@ -293,7 +299,8 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
             }
             cryptoCount -= 20;
 	    updateScore();
-            asicCount += 1;
+	    asicCount += 1;
+	    updateMiner();
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 2;
@@ -318,6 +325,7 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
             cryptoCount -= 30;
 	    updateScore();
             l3Count += 1;
+	    updateMiner();
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 3;
@@ -342,6 +350,7 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
             cryptoCount -= 40;
 	    updateScore();
             hydroCount += 1;
+	    updateMiner();
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 4;
@@ -536,9 +545,22 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("GET", "updateMiners.php?m="+miniCount);
 	xhttp.send();
+	xhttp.open("GET", "updateMiners.php?a="+asicCount);
+	xhttp.send();
+	xhttp.open("GET", "updateMiners.php?l="+l3Count);
+	xhttp.send();
+	xhttp.open("GET", "updateMiners.php?h="+hydroCount);
+	xhttp.send();
 	
     }
 
+    function updateGPU()
+    {
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "updateMiners.php?g="+gpuIdx);
+	xhttp.send();
+	
+    }
     function unlock()
     {
 	    if (aboutUnlocked == true && resourcesUnlocked == true && startYourselfUnlocked == True){    
