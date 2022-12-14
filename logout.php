@@ -5,7 +5,7 @@ if (isset($_SESSION['loggedin']))
 	
 	session_unset();
 	session_destroy();
-	header("Location: playAgain.html");
+	header("Location: highScore.php");
 }
 else
   {

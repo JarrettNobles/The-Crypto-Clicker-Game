@@ -43,4 +43,10 @@ $result = $con->query("SELECT * FROM Users ORDER BY score DESC LIMIT 10");
         ?>
 
 </body>
+<footer>
+<form action="playAgain.html">
+		<input type="submit" value="Play Again" />
+	</form>
+</footer>
+
 </html>

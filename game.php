@@ -47,27 +47,17 @@
 		echo "UserName: " . $_SESSION['username'];
 		//echo "Score" . $_SESSION['score'];
 		//echo "Profile pic" . $_SESSION['pp'];
-		
+		echo " Mini: " . $_SESSION['mini'];		
 ?>
 
 
 <div style="width: 100%;">
-       <h1 id="Wallet" style="text-align: center; font-size: 75px;">
+       <h1 id="Wallet" onload="displayMini" style="text-align: center; font-size: 75px;">
            <label>Wallet:</label>
            <label id="num">0</label>
            <label>BTC</label>
        </h1><br/>
-	   <!-- php save attempt-->
-	  
 
-<!--  <center>
-
-	  <form method="post" action="save.php">
-   score: <input type="text" name="score" />
-<input type="submit" value="Save" /><br />
-</form>
-</center> --> 
-	  <!-- end of php save attempt -->
 	  
     <div id="clicker" class="tabcontent">
         <center>
@@ -245,10 +235,11 @@
     let gpuCosts = [10,20,30,40,50,60,70,80,Infinity]
     let gpuIdx = 0;
 
-    let miniCount = 0;
-    let asicCount = 0;
-    let l3Count = 0;
-    let hydroCount = 0;
+	let miniCount = <?php echo $_SESSION[mini];?>;
+        document.getElementById('mini').innerHTML = miniCount.toFixed(3);
+    let asicCount = <?php echo $_SESSION[asic];?>;
+    let l3Count = <?php echo $_SESSION[l3];?>;
+    let hydroCount = <?php echo $_SESSION[hydro];?>;
 
     let aboutUnlocked = false;
     let resourcesUnlocked = false;
@@ -285,8 +276,13 @@
 
         if(miniCount == 5) {
             document.getElementById('mini').src = "./images/mini_maxed.png";
-        }
+	}
     }
+function displayMini(){
+	if(miniCount >= 1) {
+document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini.png' class = 'miningRig' style = 'width: 200px;'>"
+    }
+	}
 
     function buyAsic()
     {
@@ -372,7 +368,8 @@
             document.getElementById('upgrade_cost').innerHTML = "Cost: " + gpuCosts[gpuIdx+1] + " BTC";
             gpuIdx += 1;
 	    updateScore();
-        }
+	//updateGPU();
+	}
     }
 
     //function to handle changing sections using tab bar at top of screen
@@ -537,7 +534,7 @@
     function updateMiner()
     {
 	const xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "updateScore.php?m="+miniCount);
+	xhttp.open("GET", "updateMiners.php?m="+miniCount);
 	xhttp.send();
 	
     }
