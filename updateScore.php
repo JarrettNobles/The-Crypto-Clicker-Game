@@ -18,38 +18,32 @@
        		   	{
        		   		die('Error adding Score: ' . $con->error);
 			}*/
-if (isset($_POST['score']))
+if (isset($_GET['s']))
         {
-		$score=$_POST['score'];
+		$score=$_GET['s'];
 		$UID=$_SESSION['UID'];
+		$_SESSION['score']= $score;
 	
-	$sql="UPDATE Users SET score='$score'
-	WHERE UID='$UID'";
-
-$data=$_POST['score'];
-   
-       // $sql="INSERT INTO Users(score) VALUES('score='$_POST[score]'')
-	//WHERE UID='$_SESSION[UID]'";
-//('$_POST[score]')";
+		$sql="UPDATE Users SET score='$score' WHERE UID='$UID'";
 
         if (!$con->query($sql)=== TRUE)
           {
           die('Error adding score: ' . $con->error);
           }
-        }
-			
-			//change this to have the mining page
-			header("Location: playAgain.html");
-			{
-
-		/*else
-			{
-			die('Passwords do not match');
-			}*/
+	echo "update success";		
 	}
-	/*else
-	{
-  		echo "Send me the data";
-	}*/
 
+if (isset($_GET['m']))
+	{
+		$miniCount=$_GET['m'];
+		$UID=$_SESSION['UID'];
+		$_SESSION['mini']= $miniCount;
+
+		$sql="UPDATE Users SET mini='$miniCount' WHERE UID='$UID'";
+
+	if (!$con->query($sql)=== TRUE)
+		{
+			die('Error adding score: ' . $con->error);
+		}
+	}
 ?> 

@@ -21,24 +21,32 @@
 	<form style="background-color: inherit;"  action="logout.php">
 		<input type="submit" value="Logout" />
 	</form>
+<?php
+	if ($_SESSION['loggedin']==1)
+	{
+		echo "LOGGED IN: ";
+		//echo "UID: " . $_SESSION['UID'];
+		echo "UserName: " . $_SESSION['username'];
+		//echo "Score" . $_SESSION['score'];
+		//echo "Profile pic" . $_SESSION['pp'];
+	}
+?>
 
-	<form style="background-color: inherit;"  action="updateScore.php">
-		<input type="submit" value="Save Game" />
+	<!-- <form style="background-color: inherit;"  action="updateScore.php">
+		<input type="submit" value="Save Game" /> -->
 	</form>
-<img src="./images/<?=$user['pp']?>" class="img-fluid rounded-circle">
-<a href="updateScore.php?score="+cryptoCount+">"Update Score/a>
-<span onclick="BOB IS THINKING!!!!">update score</span>
+<!-- <img src="/images/<?=$_SESSION['pp']?>" class="img-fluid rounded-circle">-->
 
 </div>
 
 <?php
 	if ($_SESSION['loggedin']==1)
 	{
-		echo "IN SESSION ";
-		echo "UID: " . $_SESSION['UID'];
+		echo "LOGGED IN: ";
+		//echo "UID: " . $_SESSION['UID'];
 		echo "UserName: " . $_SESSION['username'];
-		echo "Score" . $_SESSION['score'];
-		echo "Profile pic" . $_SESSION['pp'];
+		//echo "Score" . $_SESSION['score'];
+		//echo "Profile pic" . $_SESSION['pp'];
 		
 ?>
 
@@ -63,7 +71,7 @@
 	  
     <div id="clicker" class="tabcontent">
         <center>
-        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color(); "/> <br/>
+        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color();"/> <br>
         </center>
         <div id = "miners">
             <h3 style="text-align: center; font-size: 60px; color: white; border-style: solid; border-color: rgb(2,64,120);
@@ -251,6 +259,7 @@
     {
         cryptoCount += incVal;
         document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+	updateScore();
     }
 
     //functions for buying miners
@@ -262,10 +271,13 @@
                 document.getElementById("miniMiners").innerHTML += "<h3>Mini Asic Miners</h3>";
             }
             cryptoCount -= 10;
-            miniCount += 1;
+	    updateScore();
+	    miniCount += 1;
+	    updateMiner();
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 1;
+		updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             }, 1000)
             document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini.png' class = 'miningRig' style = 'width: 200px;'>";
@@ -284,10 +296,12 @@
                 document.getElementById("asicMiners").innerHTML += "<h3>Asic Miners</h3>";
             }
             cryptoCount -= 20;
+	    updateScore();
             asicCount += 1;
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 2;
+	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             }, 1000)
             document.getElementById("asicMiners").innerHTML += "<img src='./images/asic.png' class = 'miningRig' style = 'width: 200px;'>";
@@ -306,10 +320,12 @@
                 document.getElementById("l3Miners").innerHTML += "<h3>L3++ Miners</h3>"
             }
             cryptoCount -= 30;
+	    updateScore();
             l3Count += 1;
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 3;
+	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             }, 1000)
             document.getElementById("l3Miners").innerHTML += "<img src='./images/L3++.png' class = 'miningRig' style = 'width: 200px;'>";
@@ -328,10 +344,12 @@
                 document.getElementById("hydrominers").innerHTML += "<h3>S19 Pro Hydro Miners</h3>"
             }
             cryptoCount -= 40;
+	    updateScore();
             hydroCount += 1;
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             setInterval(function () {
                 cryptoCount += 4;
+	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             }, 1000)
             document.getElementById("hydrominers").innerHTML += "<img src='./images/S19_Pro_Hydro.png' class = 'miningRig' style = 'width: 200px;'>";
@@ -353,6 +371,7 @@
             document.getElementById('upgrade_image').src = "./images/" + gpuImages[gpuIdx+1];
             document.getElementById('upgrade_cost').innerHTML = "Cost: " + gpuCosts[gpuIdx+1] + " BTC";
             gpuIdx += 1;
+	    updateScore();
         }
     }
 
@@ -365,6 +384,7 @@
             else
             {
                 cryptoCount -= 100;
+	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
                 document.getElementById('aboutButton').innerText = 'About';
                 aboutUnlocked = true;
@@ -377,6 +397,7 @@
             else
             {
                 cryptoCount -= 200;
+	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
                 document.getElementById('resourcesButton').innerText = 'Resources';
                 resourcesUnlocked = true;
@@ -389,6 +410,7 @@
             else
             {
                 cryptoCount -= 300;
+	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
                 document.getElementById('startYourselfButton').innerText = 'Start Yourself';
                 startYourselfUnlocked = true;
@@ -420,6 +442,7 @@
         if(cryptoCount >= cost)
         {
             cryptoCount -= cost;
+	    updateScore();
             document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
             document.getElementById(id).style.display = 'block';
             document.getElementById(id+'Button').style.display = 'none';
@@ -503,45 +526,29 @@
         document.body.style.color = bgColor;
     }
 
-//Trying to use JS var to update php var
 
-/*var num = cryptoCount;
-function add(){
-     num++;
-     document.getElementById('num').value = cryptoCount;
-}*/
-
-    /*
-function change(score){
+    function updateScore()
+    {
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "updateScore.php?s="+cryptoCount);
+	xhttp.send();
+    }
+    
+    function updateMiner()
+    {
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "updateScore.php?m="+miniCount);
+	xhttp.send();
 	
-$.ajax({  
-    type: 'POST',  
-    url: 'updateScore.php', 
-    data: { 'score': change,'score': 'username'},
-    success: function(response) {
-	    game.php(response);
-	    alert(<?php echo "score";?>);
     }
-}}); */
-/*
-$.ajax({  
-    type: 'GET',  
-    url: 'game.php', 
-    data: { score: this.title },
-    success: function(response) {
-        game.php(response);
+
+    function unlock()
+    {
+	    if (aboutUnlocked == true && resourcesUnlocked == true && startYourselfUnlocked == True){    
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "unlock.php?p="+1);
+	xhttp.send();
+	    }
     }
-});
- */
-/*
-function ajax(){
-	alert(<?php echo "score";?>);
-}*/
 </script>
-<?php/*
-	<form action="updateScore.php " method="post">
-<button onclick="add()">Add</button>
-<input type="submit" name="num" id="num" value="num" />
-<input type="submit" />
-</form>
- */?>
+

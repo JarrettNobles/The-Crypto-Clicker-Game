@@ -12,8 +12,8 @@
 <form method="post" action="createAccount.php">
   User name:<br>
   <input type="text" name="username" ><br><br>
-Profile Picture: <br>
-	<input type="file" class="form-control" name="pp">
+<!--Profile Picture: <br>
+	<input type="file" class="form-control" name="pp"> -->
   Password:<br>
   <input type="password" name="password1" ><br><br>
   Re-enter your Password:<br>
@@ -26,7 +26,7 @@ Profile Picture: <br>
 <p> Already have an account click the button below</p>
 </center>
 	<form action="login.html">
-		<input type="submit" value="Login" />
+		<input type="submit" value="Login   " />
 
 </footer>
 <style>

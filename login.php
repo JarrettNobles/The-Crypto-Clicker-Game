@@ -24,6 +24,12 @@ if ($result=mysqli_query($con,$sql))
 	    $_SESSION['UID']= $row['UID'];
 	    $_SESSION['score'] = $row['score'];
 	    $_SESSION['username'] = $row['username'];
+	    $_SESSION['pp'] = $row['pp'];
+	    $_SESSION['tabs'] = $row['tabs'];
+	    $_SESSION['mini'] = $row['mini'];
+	    $_SESSION['asic'] = $row['asic'];
+	    $_SESSION['l3'] = $row['l3'];
+	    $_SESSION['hydro'] = $row['hydro'];
 		
 echo "NEW SESSION WITH...";
 echo "UID: " . $_SESSION['UID'];

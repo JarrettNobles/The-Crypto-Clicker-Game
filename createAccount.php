@@ -14,7 +14,7 @@
   				die('Could not connect to mySQL: ' . $con->connect_error);
   			}
 			
-			if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
+		/*	if (isset($_FILES['pp']['name']) AND !empty($_FILES['pp']['name'])) {
          
          
          $img_name = $_FILES['pp']['name'];
@@ -31,12 +31,12 @@
 			  $new_img_name = uniqid($_POST[username], true).'.'.$img_ex_to_lc;
                $img_upload_path = '../images/'.$new_img_name;
                move_uploaded_file($tmp_name, $img_upload_path); //might have to change upload path to image path
-			
+		 */	
 			
 			
 			//database insertion
-			$sql = "INSERT INTO Users (username, Password, score,pp) VALUES ('$_POST[username]','$md5Pass','0','$new_img_name')";
-			echo "Built sql: " . $sql;
+			$sql = "INSERT INTO Users (username, Password, score) VALUES ('$_POST[username]','$md5Pass','0')";
+			//echo "Built sql: " . $sql;
 
 	        	if (!$con->query($sql)=== TRUE)
        		   	{
