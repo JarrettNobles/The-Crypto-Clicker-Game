@@ -62,5 +62,20 @@ if (isset($_GET['h']))
 		}
 	}
 
+if (isset($_GET['g']))
+	{
+		$gpuIdx=$_GET['g'];
+		$UID=$_SESSION['UID'];
+		$_SESSION['gpu']= $gpuIdx;
+
+		$sql="UPDATE Users SET gpu='$gpuIdx' WHERE UID='$UID'";
+
+	if (!$con->query($sql)=== TRUE)
+		{
+			die('Error adding score: ' . $con->error);
+		}
+}
+
+
 ?> 
 

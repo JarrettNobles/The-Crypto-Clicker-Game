@@ -246,11 +246,6 @@
     let startYourselfUnlocked = false;
 
 
-
-    ///////////////   Insert a loop that goes miniCount FROM THE DB times running the following:
-   /* for(let i =miniCount; i <miniCount; i++){
-	    document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini.png' class = 'miningRig' style = 'width: 200px;'>";
-    } */
     //function to increment cryptoCount and rewrite it to document
     function increment()
     {
@@ -258,7 +253,10 @@
         document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
 	updateScore();
     }
-
+    
+   // for(let i=1; i<=asicCount; i++){
+	   // document.getElementById("asicMiners").innerHTML += "<img src='./images/asic.png' class = 'miningRig' style = 'width: 200px;'>";
+   // }
     //functions for buying miners
     function buyMini()
     {
@@ -377,10 +375,60 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
             document.getElementById('upgrade_cost').innerHTML = "Cost: " + gpuCosts[gpuIdx+1] + " BTC";
             gpuIdx += 1;
 	    updateScore();
-	//updateGPU();
+	    updateGPU();
 	}
     }
 
+    ///////////////////////////// for loops for the boys
+   //miniMiner display
+    for(let i=1; i<=miniCount; i++){
+	    document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini.png' class = 'miningRig' style = 'width: 200px;'>";
+            setInterval(function () {
+                cryptoCount += 1;
+	    	updateScore();
+                document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+            }, 1000)
+    }
+   //asicMiner display
+    for(let j=1; j<=asicCount;j++){
+		    document.getElementById("asicMiners").innerHTML += "<img src='./images/asic.png' class = 'miningRig' style = 'width: 200px;'>";
+            setInterval(function () {
+                cryptoCount += 2;
+	    	updateScore();
+                document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+            }, 1000)
+	    }
+   //l3Miner display
+    for(let l=1; l<=l3Count;l++){
+			    document.getElementById("l3Miners").innerHTML += "<img src='./images/L3++.png' class = 'miningRig' style = 'width: 200px;'>";
+            setInterval(function () {
+                cryptoCount += 3;
+	    	updateScore();
+                document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+            }, 1000)
+		    }
+    //hydroMiner display
+    for(let m=1; m<=hydroCount;m++){
+	   			 document.getElementById("hydrominers").innerHTML += "<img src='./images/S19_Pro_Hydro.png' class = 'miningRig' style = 'width: 200px;'>";
+            setInterval(function () {
+                cryptoCount += 4;
+	    	updateScore();
+                document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+            }, 1000)
+    }
+
+    // GPU display Dr allen help us
+    for(let n=0; n>=gpuIdx;n++){
+	    document.getElementById("upgrade_image").innerHTML += "<img src='./images/1050.png' style = 'width: 200px;'>";
+	   /* document.getElementById("graphics_card").innerHTML += "<img src='./images/1660.png' class = 'miningRig' style = 'width: 200px;'>";
+	    document.getElementById("graphics_card").innerHTML += "<img src='./images/2060Super.png' class = 'miningRig' style = 'width: 200px;'>";
+	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3060.png' class = 'miningRig' style = 'width: 200px;'>";
+	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3060ti.png' class = 'miningRig' style = 'width: 200px;'>";
+	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3070.png' class = 'miningRig' style = 'width: 200px;'>";
+	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3090.png' class = 'miningRig' style = 'width: 200px;'>";
+	    */
+    }
+   
     //function to handle changing sections using tab bar at top of screen
     function openSection(sectionName) {
         if(sectionName == 'about' && !aboutUnlocked)
