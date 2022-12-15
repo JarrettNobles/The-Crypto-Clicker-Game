@@ -470,7 +470,24 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
                 startYourselfUnlocked = true;
             }
         }
-        // Declare all variables
+	// tabs unlocked display       
+	    if (aboutUnlocked == true){    
+		document.getElementById('aboutButton').innerText = 'About';	
+	    }
+	    if (resourcesUnlocked == true){    
+		document.getElementById('resourcesButton').innerText = 'Resources';
+	    }
+	    if (startYourselfUnlocked == True){    
+		document.getElementById('startYourselfButton').innerText = 'Start Yourself';
+	    }
+
+
+
+
+
+
+
+	// Declare all variables
         var i, tabcontent, tablinks;
 
         // Get all elements with class="tabcontent" and hide them
@@ -609,6 +626,15 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
 	xhttp.send();
 	
     }
+    
+    
+    function updateTabs()
+    {
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "updateTabs.php?a="+aboutUnlocked);
+	xhttp.send();
+    }
+    
     function unlock()
     {
 	    if (aboutUnlocked == true && resourcesUnlocked == true && startYourselfUnlocked == True){    
