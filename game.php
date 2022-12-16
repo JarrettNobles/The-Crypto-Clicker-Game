@@ -35,7 +35,7 @@
 	<!-- <form style="background-color: inherit;"  action="updateScore.php">
 		<input type="submit" value="Save Game" /> -->
 	</form>
-<!-- <img src="/images/<?=$_SESSION['pp']?>" class="img-fluid rounded-circle">-->
+<!-- <img src="/images/=$_SESSION['pp']?>" class="img-fluid rounded-circle">-->
 
 </div>
 
@@ -52,7 +52,7 @@
 
 
 <div style="width: 100%;">
-       <h1 id="Wallet" onload="displayMini" style="text-align: center; font-size: 75px;">
+       <h1 id="Wallet" style="text-align: center; font-size: 75px;" onclick="increment2();">
            <label>Wallet:</label>
            <label id="num">0</label>
            <label>BTC</label>
@@ -61,7 +61,7 @@
 	  
     <div id="clicker" class="tabcontent">
         <center>
-        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event); random_color();"/> <br>
+        <img id = "graphics_card" src="./images/1030.png" style="width: 500px" onclick="increment(); pop(event);"/> <br>
         </center>
         <div id = "miners">
             <h3 style="text-align: center; font-size: 60px; color: white; border-style: solid; border-color: rgb(2,64,120);
@@ -132,8 +132,7 @@
         <div id="eth" style="display: none">
             <h3>Ethereum</h3>
             <p>
-                Ethereum is the 2nd largest cryptocurrency by market cap and has one of the largest crypto ecosystems. It is
-                a proof-of-work blockchain but will soon switch to a proof-of-stake blockchain. They are calling the event
+                Ethereum is the 2nd largest cryptocurrency by market cap and has one of the largest crypto ecosystems. It is a proof-of-stake blockchain. They are calling the event
                 of the switch from one consensus mechanism to another  the "Merge." The Merge is set to take place in September 2022.
             </p>
         </div>
@@ -156,7 +155,7 @@
         </div>
         <center><button id = "marketResearchButton" onclick="showText('marketResearch',20,'youtube')" style="display: none">Show more<br/>Cost: 20 BTC</button></center>
         <div id="marketResearch" style="display: none;">
-            <h3>Crypto Price Aggregators</h3>
+            <h3>Crypto20Price Aggregators</h3>
             <a href="https://coinmarketcap.com/" target="_blank">Coin Market Cap</a> <br>
             <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a>
         </div>
@@ -229,19 +228,29 @@
    let cryptoCount = <?php echo $_SESSION['score']; ?>;
         document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
 
-    let incVal = 1;
+	/////////////////// BOB NOTE  init this from DB, done
+	let incVal = <?php echo $_SESSION['incVal']; ?>;
 
-    let gpuImages = ["1050.png","1660.png","2060super.png","3060.png","3060ti.png","3070.png","3070wooden.png","3090.png","max_gpu.png"]
-    let gpuCosts = [10,20,30,40,50,60,70,80,Infinity]
-    let gpuIdx = 0;
+    let gpuImages = ["1030.png","1050.png","1660.png","2060super.png","3060.png","3060ti.png","3070.png","3070wooden.png","3090.png","max_gpu.png"]
+    let gpuCosts = [10,20,30,400,500,600,7000,80000,Infinity]
 
+
+  
+    
+	/////////////////// BOB NOTE  init this from DB, done
+    let gpuIdx = <?php echo $_SESSION['gpuIdx']; ?>;
+
+            document.getElementById('graphics_card').src = "./images/" + gpuImages[gpuIdx];
+            document.getElementById('upgrade_image').src = "./images/" + gpuImages[gpuIdx+1];
+            document.getElementById('upgrade_cost').innerHTML = "Cost: " + gpuCosts[gpuIdx+1] + " BTC";
 	let miniCount = <?php echo $_SESSION[mini];?>;
        // document.getElementById('mini').innerHTML = miniCount.toFixed(3);
     let asicCount = <?php echo $_SESSION[asic];?>;
     let l3Count = <?php echo $_SESSION[l3];?>;
     let hydroCount = <?php echo $_SESSION[hydro];?>;
 
-    let aboutUnlocked = false;
+    let aboutUnlocked = 0;
+ //<?php echo $_SESSION[aboutUnlocked];?>;
     let resourcesUnlocked = false;
     let startYourselfUnlocked = false;
 
@@ -254,6 +263,15 @@
 	updateScore();
     }
     
+    function increment2()
+    {
+        cryptoCount += incVal*20;
+        document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
+	updateScore();
+    }
+    
+    
+     
    // for(let i=1; i<=asicCount; i++){
 	   // document.getElementById("asicMiners").innerHTML += "<img src='./images/asic.png' class = 'miningRig' style = 'width: 200px;'>";
    // }
@@ -363,19 +381,28 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
         }
     }
 
-    //function to upgrade gpu
+    //function to upgrade gpu   ////////////////////////////////////// BOB NOTE  need to save  incval and gpuInx to DB
+    //
     function upgradeGPU()
     {
         if(cryptoCount >= gpuCosts[gpuIdx] && gpuIdx < 8) {
             cryptoCount -= gpuCosts[gpuIdx];
             document.getElementById('num').innerHTML = cryptoCount;
             incVal *= 2;
+
+	    ////////////// BOB NOTE   update incVal in DB
+	    //
+	    // //////////////// BOB  NOTE  Will want to copy these three lines into intial code JS, Jarrett did this
             document.getElementById('graphics_card').src = "./images/" + gpuImages[gpuIdx];
             document.getElementById('upgrade_image').src = "./images/" + gpuImages[gpuIdx+1];
             document.getElementById('upgrade_cost').innerHTML = "Cost: " + gpuCosts[gpuIdx+1] + " BTC";
             gpuIdx += 1;
+
+	    //////////////////// BOB NOTE update gpuIdx in DB
 	    updateScore();
 	    updateGPU();
+	    updateIncVal();
+	    increment();
 	}
     }
 
@@ -418,20 +445,21 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
     }
 
     // GPU display Dr allen help us
-    for(let n=0; n>=gpuIdx;n++){
+  /*  for(let n=1; n>=gpuIdx;n++){
 	    document.getElementById("upgrade_image").innerHTML += "<img src='./images/1050.png' style = 'width: 200px;'>";
-	   /* document.getElementById("graphics_card").innerHTML += "<img src='./images/1660.png' class = 'miningRig' style = 'width: 200px;'>";
+    }
+    document.getElementById("graphics_card").innerHTML += "<img src='./images/1660.png' class = 'miningRig' style = 'width: 200px;'>";
 	    document.getElementById("graphics_card").innerHTML += "<img src='./images/2060Super.png' class = 'miningRig' style = 'width: 200px;'>";
 	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3060.png' class = 'miningRig' style = 'width: 200px;'>";
 	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3060ti.png' class = 'miningRig' style = 'width: 200px;'>";
 	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3070.png' class = 'miningRig' style = 'width: 200px;'>";
 	    document.getElementById("graphics_card").innerHTML += "<img src='./images/3090.png' class = 'miningRig' style = 'width: 200px;'>";
 	    */
-    }
+   // }
    
     //function to handle changing sections using tab bar at top of screen
     function openSection(sectionName) {
-        if(sectionName == 'about' && !aboutUnlocked)
+        if(sectionName == 'about' && aboutUnlocked ==0)
         {
             if(cryptoCount < 100)
                 return;
@@ -441,7 +469,8 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
 	    	updateScore();
                 document.getElementById('num').innerHTML = cryptoCount.toFixed(3);
                 document.getElementById('aboutButton').innerText = 'About';
-                aboutUnlocked = true;
+		aboutUnlocked = 1;
+		updateTabs();
             }
         }
         if(sectionName == 'resources' && !resourcesUnlocked)
@@ -471,15 +500,16 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
             }
         }
 	// tabs unlocked display       
-	    if (aboutUnlocked == true){    
-		document.getElementById('aboutButton').innerText = 'About';	
-	    }
-	    if (resourcesUnlocked == true){    
-		document.getElementById('resourcesButton').innerText = 'Resources';
-	    }
-	    if (startYourselfUnlocked == True){    
-		document.getElementById('startYourselfButton').innerText = 'Start Yourself';
-	    }
+	  /* 	if (aboutUnlocked == 1){    
+			openSection();
+			document.getElementById('aboutButton').innerText = 'About';	
+	    	}
+	/*	else if (resourcesUnlocked == true){    
+			document.getElementById('resourcesButton').innerText = 'Resources';
+	   	 }
+		else (startYourselfUnlocked == true){    
+			document.getElementById('startYourselfButton').innerText = 'Start Yourself';
+    }*/ 
 
 
 
@@ -627,21 +657,28 @@ document.getElementById("miniMiners").innerHTML += "<img src='./images/asic_mini
 	
     }
     
+    function updateIncVal()
+    {
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "updateMiners.php?v="+incVal);
+	xhttp.send();	
+    }
+	    	    
     
     function updateTabs()
     {
 	const xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "updateTabs.php?a="+aboutUnlocked);
+	xhttp.open("GET", "updateTabs.php?t="+1);
 	xhttp.send();
     }
     
-    function unlock()
+    /*function unlock()
     {
 	    if (aboutUnlocked == true && resourcesUnlocked == true && startYourselfUnlocked == True){    
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("GET", "unlock.php?p="+1);
 	xhttp.send();
 	    }
-    }
+    } */
 </script>
 

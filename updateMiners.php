@@ -68,7 +68,35 @@ if (isset($_GET['g']))
 		$UID=$_SESSION['UID'];
 		$_SESSION['gpu']= $gpuIdx;
 
-		$sql="UPDATE Users SET gpu='$gpuIdx' WHERE UID='$UID'";
+		$sql="UPDATE Users SET gpuIdx='$gpuIdx' WHERE UID='$UID'";
+
+	if (!$con->query($sql)=== TRUE)
+		{
+			die('Error adding score: ' . $con->error);
+		}
+}
+
+if (isset($_GET['v']))
+	{
+		$incVal=$_GET['v'];
+		$UID=$_SESSION['UID'];
+		$_SESSION['incVal']= $incVal;
+
+		$sql="UPDATE Users SET incVal='$incVal' WHERE UID='$UID'";
+
+	if (!$con->query($sql)=== TRUE)
+		{
+			die('Error adding score: ' . $con->error);
+		}
+}
+
+if (isset($_GET['t']))
+	{
+		$aboutUnlocked=$_GET['t'];
+		$UID=$_SESSION['UID'];
+		$_SESSION['aboutUnlocked']= $aboutUnlocked;
+
+		$sql="UPDATE Users SET aboutUnlocked='$aboutUnlocked' WHERE UID='$UID'";
 
 	if (!$con->query($sql)=== TRUE)
 		{

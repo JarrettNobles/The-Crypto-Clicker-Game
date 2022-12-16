@@ -30,6 +30,9 @@ if ($result=mysqli_query($con,$sql))
 	    $_SESSION['asic'] = $row['asic'];
 	    $_SESSION['l3'] = $row['l3'];
 	    $_SESSION['hydro'] = $row['hydro'];
+	    $_SESSION['gpuIdx'] = $row['gpuIdx'];
+	    $_SESSION['incVal'] = $row['incVal'];
+	    $_SESSION['aboutUnlocked'] = $row['aboutUnlocked'];
 		
 echo "NEW SESSION WITH...";
 echo "UID: " . $_SESSION['UID'];

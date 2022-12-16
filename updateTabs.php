@@ -8,13 +8,13 @@
   			{
   				die('Could not connect to mySQL: ' . $con->connect_error);
   			}
-if (isset($_GET['m']))
+if (isset($_GET['t']))
 	{
-		$miniCount=$_GET['m'];
+		$aboutUnlocked=$_GET['t'];
 		$UID=$_SESSION['UID'];
-		$_SESSION['mini']= $miniCount;
+		$_SESSION['aboutUnlocked']= $aboutUnlocked;
 
-		$sql="UPDATE Users SET mini='$miniCount' WHERE UID='$UID'";
+		$sql="UPDATE Users SET aboutUnlocked='$aboutUnlocked' WHERE UID='$UID'";
 
 	if (!$con->query($sql)=== TRUE)
 		{
